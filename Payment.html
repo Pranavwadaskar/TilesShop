@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .payment-form {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+
+        .payment-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .form-group .input-flex {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-group .input-flex input {
+            flex: 1;
+        }
+
+        .pay-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .pay-button:hover {
+            background-color: #0056b3;
+        }
+
+
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav1 {
+/*            display: flex;*/
+            justify-content: center;
+            background-color: #444;
+            padding: 1px;
+            padding-right: 50px;
+            padding-left: 80px;
+            position: sticky;
+            top: 0;
+            z-index: 80;
+        }
+
+        nav1 a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav1 a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: url('back.png') no-repeat center;
+            background-size: cover;
+            color: white;
+            height: 30vw;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            animation: fadeInDown 3s ease-in-out; /* Fade-in animation */
+            color: white;
+
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="color: white;">Welcome to Tiles Shop</h1>
+    </header>
+
+    <nav1>
+        <a href="home.html">Home</a>
+        <a href="buynow.html">Products</a>
+        <a href="aboutUs.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="sustainability.html">Sustainability</a>
+        <a href="OurStories.html">Our Stories</a>
+        <a href="login.html">Login</a>
+        <a href="cart.html">Cart</a>
+    </nav1>
+
+    <form class="payment-form">
+        <h2>Payment Form</h2>
+
+        <div class="form-group">
+            <label for="card-name">Cardholder Name</label>
+            <input type="text" id="card-name" placeholder="Enter cardholder name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+        </div>
+
+        <div class="form-group input-flex">
+            <div>
+                <label for="expiry-date">Expiry Date</label>
+                <input type="text" id="expiry-date" placeholder="MM/YY" required>
+            </div>
+            <div>
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="123" required>
+            </div>
+        </div>
+
+        <button type="submit" onclick="alertBox()" class="pay-button">Pay Now</button>
+    </form>
+
+    <script>
+        function alertBox(){
+            alert("Purchase succesfull !!");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Search Engine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        header {
+            background-color: #4285f4;
+            color: white;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        .search-container {
+            margin: 50px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 18px;
+        }
+        .search-box:focus {
+            border-color: #4285f4;
+            outline: none;
+        }
+        .results-container {
+            margin-top: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .result {
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .result a {
+            text-decoration: none;
+            color: #4285f4;
+            font-weight: bold;
+        }
+        .result a:hover {
+            text-decoration: underline;
+        }
+        .result p {
+            margin: 5px 0 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mini Search Engine</h1>
+    </header>
+
+    <div class="search-container">
+        <input
+            type="text"
+            class="search-box"
+            id="search-box"
+            placeholder="Type something to search..."
+        >
+    </div>
+
+    <div class="results-container" id="results-container"></div>
+
+    <script>
+        // Mock database of search results
+        const database = [
+            {
+                title: "Google",
+                link: "https://www.google.com",
+                description: "Google is the world's most popular search engine."
+            },
+            {
+                title: "HTML Guide",
+                link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+                description: "Learn the basics of HTML for web development."
+            },
+            {
+                title: "CSS Tricks",
+                link: "https://css-tricks.com",
+                description: "CSS-Tricks is a great resource for learning CSS."
+            },
+            {
+                title: "JavaScript Documentation",
+                link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+                description: "The MDN Web Docs for JavaScript."
+            },
+            {
+                title: "GitHub",
+                link: "https://github.com",
+                description: "GitHub is a platform for version control and collaboration."
+            }
+        ];
+
+        // Search function
+        const searchBox = document.getElementById("search-box");
+        const resultsContainer = document.getElementById("results-container");
+
+        searchBox.addEventListener("input", function () {
+            const query = searchBox.value.toLowerCase();
+            resultsContainer.innerHTML = ""; // Clear previous results
+
+            if (query.trim() === "") return; // If the input is empty, exit
+
+            const results = database.filter((item) =>
+                item.title.toLowerCase().includes(query) ||
+                item.description.toLowerCase().includes(query)
+            );
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = "<p>No results found.</p>";
+                return;
+            }
+
+            results.forEach((result) => {
+                const resultDiv = document.createElement("div");
+                resultDiv.className = "result";
+
+                resultDiv.innerHTML = `
+                    <a href="${result.link}" target="_blank">${result.title}</a>
+                    <p>${result.description}</p>
+                `;
+                resultsContainer.appendChild(resultDiv);
+            });
+        });
+    </script>
+</body>
+</html>
